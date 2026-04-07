@@ -1,0 +1,49 @@
+import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
+import WhatsAppButton from '@/components/layout/WhatsAppButton'
+import PageHero from '@/components/shared/PageHero'
+import Link from 'next/link'
+import { products } from '@/data/products'
+
+export default function ProductsPage() {
+  return (
+    <>
+      <Navbar />
+      <main>
+        <PageHero 
+          title="OUR PRODUCTS" 
+          subtitle="Engineered for reliability, safety, and scale. Browse our full range of custom-built electrical panels." 
+        />
+        <section className="bg-[var(--gray-bg)] py-24">
+          <div className="max-w-[1280px] mx-auto px-8">
+             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {products.map((product, i) => (
+                  <div key={product.slug} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden group hover:border-[var(--primary)] transition-colors">
+                    <div className="h-48 overflow-hidden bg-[var(--black)] relative border-b border-[var(--primary)]/10">
+                       <img 
+                         src={`/images/products/product-${(i % 8) + 1}.svg`} 
+                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                         alt={product.name}
+                       />
+                       <span className="absolute top-2 right-2 bg-[var(--primary)] text-white text-[10px] font-rajdhani font-bold uppercase tracking-widest px-2 py-1">
+                         {product.category}
+                       </span>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-rajdhani text-xl font-bold uppercase tracking-wider mb-2">{product.name}</h3>
+                      <p className="font-inter text-sm text-[var(--gray)] line-clamp-2 mb-4">{product.description}</p>
+                      <Link href={`/products/${product.slug}`} className="text-[var(--primary)] font-rajdhani font-bold tracking-widest text-sm uppercase group-hover:underline">
+                        View Details →
+                      </Link>
+                    </div>
+                  </div>
+                ))}
+             </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+    </>
+  )
+}

@@ -1,0 +1,72 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import SectionLabel from '../shared/SectionLabel'
+import ScrollReveal, { staggerContainer, fadeUp } from '../shared/ScrollReveal'
+import { services } from '@/data/services'
+
+export default function Services() {
+  return (
+    <section className="bg-white py-24 md:py-32">
+      <div className="max-w-[1280px] mx-auto px-8">
+        
+        <div className="text-center flex flex-col items-center mb-16">
+          <SectionLabel text="Our Expertise" color="accent" />
+          <h2 className="font-bebas text-5xl md:text-6xl uppercase text-[var(--accent)]">Core <span className="text-[var(--primary)]">Services</span></h2>
+          <p className="font-inter text-[var(--gray)] max-w-2xl mt-4">We deliver comprehensive electrical solutions tailored to industrial, commercial, and infrastructure applications.</p>
+        </div>
+
+        <ScrollReveal animation={staggerContainer}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.slice(0, 3).map((service, i) => (
+              <motion.div 
+                key={service.slug}
+                variants={fadeUp}
+                whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0,0,0,0.08)' }}
+                className="group bg-white p-8 relative rounded-sm shadow-sm border border-[var(--border)] overflow-hidden flex flex-col h-full"
+              >
+                {/* Red top border that grows on hover */}
+                <div className="absolute top-0 left-0 h-1 bg-[var(--primary)] w-0 group-hover:w-full transition-all duration-500" />
+                
+                <div className="text-4xl mb-6 bg-[var(--primary-soft)] w-16 h-16 flex items-center justify-center rounded-sm text-[var(--primary)]">
+                  {service.icon}
+                </div>
+                
+                <h3 className="font-rajdhani text-2xl font-bold uppercase tracking-wider mb-3 text-[var(--accent)]">
+                  {service.title}
+                </h3>
+                
+                <p className="font-inter text-[var(--gray)] text-sm mb-6 leading-relaxed line-clamp-4 flex-grow">
+                  {service.description}
+                </p>
+                
+                <Link 
+                  href={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 font-rajdhani text-sm font-bold uppercase tracking-widest text-[var(--black)] group-hover:text-[var(--primary)] transition-colors"
+                >
+                  Learn More 
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+                
+              </motion.div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        <div className="text-center mt-16 md:mt-20">
+          <Link href="/services">
+            <motion.button 
+              whileHover={{ y: -2, scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-12 py-4 bg-[var(--primary)] text-white font-rajdhani font-bold tracking-[0.2em] uppercase rounded-sm shadow-xl hover:shadow-2xl transition-all"
+            >
+              View All Services
+            </motion.button>
+          </Link>
+        </div>
+
+      </div>
+    </section>
+  )
+}
