@@ -13,8 +13,14 @@ const certs = [
 
 export default function Certifications() {
   return (
-    <section className="bg-white py-24 pb-32">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <motion.section 
+      initial={{ x: 150, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="bg-white py-16 lg:py-24 h-full flex flex-col justify-center border-l lg:border-[var(--border)]"
+    >
+      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12">
         
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="Quality Assured" color="accent" />
@@ -23,7 +29,7 @@ export default function Certifications() {
           </h2>
         </div>
 
-        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <ScrollReveal animation={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
           {certs.map((cert, i) => (
             <motion.div
               key={i}
@@ -52,6 +58,6 @@ export default function Certifications() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   )
 }

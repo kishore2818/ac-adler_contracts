@@ -9,13 +9,13 @@ export default function ContactPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/contact.png" 
           title="CONTACT US" 
           subtitle="Get in touch with our engineering experts for quotes, technical support, and partnership inquiries." 
         />
         
         <section className="bg-white py-24">
-          <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="w-full mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             <div className="space-y-8">
                <div className="bg-[var(--gray-bg)] p-8 border-l-4 border-[var(--primary)]">

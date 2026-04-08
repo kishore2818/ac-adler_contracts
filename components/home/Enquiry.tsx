@@ -43,12 +43,18 @@ export default function Enquiry() {
   }
 
   return (
-    <section className="bg-white py-24 relative overflow-hidden">
+    <motion.section 
+      whileHover={{ 
+        boxShadow: "inset 0 0 40px rgba(124, 179, 66, 0.08)"
+      }}
+      transition={{ duration: 0.5 }}
+      className="bg-white py-16 lg:py-24 relative overflow-hidden h-full flex flex-col justify-center border-l lg:border-[var(--border)] group"
+    >
       
       {/* Background Radial Light Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,var(--primary-soft)_0%,transparent_65%)] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,var(--primary-soft)_0%,transparent_65%)] pointer-events-none group-hover:scale-110 transition-transform duration-700" />
 
-      <div className="max-w-[860px] mx-auto px-8 relative z-10">
+      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
         
         <div className="text-center mb-12">
           <SectionLabel text="Request a Quote" color="accent" />
@@ -155,6 +161,6 @@ export default function Enquiry() {
 
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   )
 }

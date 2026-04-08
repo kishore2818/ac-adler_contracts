@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SectionLabel from '../shared/SectionLabel'
 
@@ -34,11 +34,24 @@ export default function Testimonials() {
   const handleNext = () => setCurrent((prev) => (prev + 1) % testimonials.length)
   const handlePrev = () => setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length)
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % testimonials.length)
+    }, 3000)
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section className="bg-[var(--gray-bg)] py-24 border-y border-[var(--border)]">
-      <div className="max-w-[1280px] mx-auto px-8">
+      <div className="w-full mx-auto px-8">
         
-        <div className="text-center flex flex-col items-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center flex flex-col items-center mb-16"
+        >
           <SectionLabel text="Client Feedback" color="accent" />
           <h2 className="font-bebas text-5xl md:text-6xl text-[var(--accent)] tracking-wider">
             WHAT THEY <span className="text-[var(--primary)]">SAY</span>
@@ -58,7 +71,7 @@ export default function Testimonials() {
               →
             </button>
           </div>
-        </div>
+        </motion.div>
 
         <div className="relative min-h-[320px]">
           <AnimatePresence mode="wait">

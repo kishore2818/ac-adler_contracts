@@ -9,7 +9,7 @@ export default function ServicesPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/services.png" 
           title="OUR SERVICES" 
           subtitle="Comprehensive electrical contracting solutions from design and planning to execution and maintenance." 
         />

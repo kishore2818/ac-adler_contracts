@@ -18,15 +18,19 @@ export default async function ProductDetail({ params }: { params: Promise<{ slug
     <>
       <Navbar />
       <main>
-        <PageHero title={product.name} subtitle={product.description} />
+        <PageHero image="/images/page-headers/products.png" title={product.name} subtitle={product.description} />
         
         <section className="py-24 bg-white">
-          <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="w-full mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
             
-            {/* Main Details */}
+             {/* Main Details */}
             <div className="lg:col-span-8">
-               <div className="w-full aspect-video bg-[var(--gray-bg)] border border-[var(--border)] mb-10 p-2 overflow-hidden rounded-sm relative">
-                <img src="/images/products/product-1.jpg" className="w-full h-full object-cover rounded-sm" alt={product.name}/>
+               <div className="w-full aspect-video bg-[var(--gray-bg)] border border-[var(--border)] mb-10 p-2 overflow-hidden rounded-sm relative group">
+                <img 
+                  src={product.image} 
+                  className="w-full h-full object-cover rounded-sm group-hover:scale-[1.02] transition-transform duration-700" 
+                  alt={product.name}
+                />
                </div>
 
                <h2 className="font-bebas text-4xl text-[var(--black)] mb-6 border-b border-[var(--border)] pb-4">Technical Specifications</h2>

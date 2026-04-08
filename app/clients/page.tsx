@@ -10,13 +10,13 @@ export default function ClientsPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/clients.png" 
           title="OUR CLIENTS" 
           subtitle="We are incredibly proud to partner with some of India's most respected organizations." 
         />
         
         <section className="py-24 bg-white">
-          <div className="max-w-[1280px] mx-auto px-8">
+          <div className="w-full mx-auto px-8">
              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                {clients.map((client, i) => (
                  <div key={i} className="aspect-square bg-[var(--gray-bg)] border border-[var(--border)] flex flex-col items-center justify-center p-4 hover:border-[var(--primary)] hover:shadow-lg transition-all group">

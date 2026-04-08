@@ -7,23 +7,35 @@ import Link from 'next/link'
 
 export default function AboutSnapshot() {
   return (
-    <section className="bg-white py-24 overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <section className="bg-white py-12 md:py-16 overflow-hidden">
+      <div className="w-full mx-auto px-8">
         
         {/* Centered Section Header */}
-        <div className="text-center flex flex-col items-center mb-16">
-          <SectionLabel text="Who We Are" color="accent" />
-          <h2 className="font-bebas text-5xl md:text-6xl text-[var(--accent)] mt-4">
-            ENGINEERING EXCELLENCE IN <span className="text-[var(--primary)]">POWER DISTRIBUTION</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center flex flex-col items-center mb-10 sm:mb-12"
+        >
+          <SectionLabel text="Who We Are" color="accent" centered={true} />
+          <h2 className="font-bebas text-[clamp(2rem,6vw,3.75rem)] leading-[1.1] text-[var(--accent)] mt-4 px-4">
+            ENGINEERING EXCELLENCE IN <span className="text-[var(--primary)] text-[clamp(2rem,6vw,3.75rem)] inline-block ml-2 px-4 py-1 border-2 border-[var(--primary)] bg-[var(--primary-soft)] rounded-lg shadow-sm">POWER DISTRIBUTION</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           <ScrollReveal animation={fadeLeft} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <p className="font-inter text-[var(--gray)] text-lg mb-8 leading-relaxed max-w-2xl">
+            <motion.p 
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="font-inter text-[var(--black-soft)] font-medium text-lg mb-8 leading-relaxed max-w-2xl border-l-4 border-[var(--primary)] pl-6 py-3 bg-[var(--primary-soft)] rounded-r-lg shadow-sm"
+            >
               Adler Contracts is a Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Our reputation is built on meticulous planning, robust project management, and a relentless focus on quality and safety.
-            </p>
+            </motion.p>
 
             <div className="space-y-6 mb-10 w-full max-w-xl">
               {[
@@ -59,7 +71,7 @@ export default function AboutSnapshot() {
               style={{ clipPath: 'polygon(20% 0, 100% 0, 80% 100%, 0 100%)' }}
             />
             
-            <div className="relative z-10 w-full aspect-[4/5] bg-[var(--black)] p-4 shadow-2xl rounded-sm group overflow-hidden border border-gray-100">
+            <div className="relative z-10 w-[75%] mx-auto aspect-[4/5] bg-[var(--black)] p-3 shadow-2xl rounded-sm group overflow-hidden border border-gray-100">
               
               {/* Corner brackets */}
               <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 border-[var(--primary)] z-20 m-4" />
@@ -68,9 +80,9 @@ export default function AboutSnapshot() {
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-[var(--primary)] z-20 m-4" />
 
               <img 
-                src="/images/hero/panel-1.jpg" 
-                alt="Adler Panel" 
-                className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 transition-all duration-700" 
+                src="/images/hero/workers/worker-5.png" 
+                alt="Adler Contracts Engineering Team" 
+                className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" 
               />
               
               {/* Floating Badge 1 */}

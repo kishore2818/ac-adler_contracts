@@ -17,8 +17,15 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="bg-[var(--gray-bg)] py-24">
-      <div className="max-w-[800px] mx-auto px-8">
+    <motion.section 
+      whileHover={{ 
+        boxShadow: "inset 0 0 40px rgba(124, 179, 66, 0.08)",
+        backgroundColor: "#fcfdfe" 
+      }}
+      transition={{ duration: 0.5 }}
+      className="bg-[var(--gray-bg)] py-16 lg:py-24 h-full flex flex-col justify-center relative overflow-hidden group transition-colors"
+    >
+      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12 relative z-10 transition-transform duration-500 group-hover:scale-[1.01]">
         
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="Got Questions?" color="accent" />
@@ -66,6 +73,6 @@ export default function FAQ() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   )
 }

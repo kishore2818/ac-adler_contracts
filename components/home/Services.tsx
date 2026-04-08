@@ -9,7 +9,7 @@ import { services } from '@/data/services'
 export default function Services() {
   return (
     <section className="bg-white py-24 md:py-32">
-      <div className="max-w-[1280px] mx-auto px-8">
+      <div className="w-full mx-auto px-8">
         
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="Our Expertise" color="accent" />
@@ -29,9 +29,13 @@ export default function Services() {
                 {/* Red top border that grows on hover */}
                 <div className="absolute top-0 left-0 h-1 bg-[var(--primary)] w-0 group-hover:w-full transition-all duration-500" />
                 
-                <div className="text-4xl mb-6 bg-[var(--primary-soft)] w-16 h-16 flex items-center justify-center rounded-sm text-[var(--primary)]">
+                <motion.div 
+                  whileHover={{ rotate: [0, -15, 15, -15, 0] }}
+                  transition={{ duration: 0.6 }}
+                  className="text-4xl mb-6 bg-[var(--primary-soft)] w-16 h-16 flex items-center justify-center rounded-sm text-[var(--primary)] origin-center"
+                >
                   {service.icon}
-                </div>
+                </motion.div>
                 
                 <h3 className="font-rajdhani text-2xl font-bold uppercase tracking-wider mb-3 text-[var(--accent)]">
                   {service.title}

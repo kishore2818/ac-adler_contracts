@@ -16,7 +16,7 @@ const industries = [
 export default function Industries() {
   return (
     <section className="bg-[var(--gray-bg)] py-24 md:py-32 border-y border-[var(--border)]">
-      <div className="max-w-[1280px] mx-auto px-8">
+      <div className="w-full mx-auto px-8">
         
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="Industries We Serve" color="accent" />
@@ -28,8 +28,8 @@ export default function Industries() {
             <motion.div
               key={ind.name}
               variants={fadeUp}
-              whileHover={{ y: -6, borderColor: 'var(--primary)' }}
-              className="group relative bg-white border border-[var(--border)] p-8 overflow-hidden rounded-sm transition-colors"
+              whileHover={{ y: -10, scale: 1.02, borderColor: 'var(--primary)' }}
+              className="group relative bg-white border border-[var(--border)] p-8 overflow-hidden rounded-sm transition-all duration-300"
             >
               {/* Hover Diagonal Overlay */}
               <div 

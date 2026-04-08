@@ -18,10 +18,10 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
     <>
       <Navbar />
       <main>
-        <PageHero title={service.title} subtitle="Detailed breakdown of our engineering capabilities." />
+        <PageHero image="/images/page-headers/services.png" title={service.title} subtitle="Detailed breakdown of our engineering capabilities." />
         
         <section className="py-24 bg-white">
-          <div className="max-w-[1280px] mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="w-full mx-auto px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
             
             <div className="md:col-span-2">
                <div className="text-6xl text-[var(--primary)] mb-8 bg-[var(--primary-soft)] w-24 h-24 flex items-center justify-center rounded-sm">

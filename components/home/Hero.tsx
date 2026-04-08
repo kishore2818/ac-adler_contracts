@@ -6,39 +6,90 @@ import Link from 'next/link'
 
 const IMAGES = [
   '/images/hero/panel-1.jpg',
-  '/images/hero/panel-2.jpg',
-  '/images/hero/panel-3.jpg',
-  '/images/hero/panel-4.jpg',
-  '/images/hero/panel-5.jpg',
+  '/images/hero/workers/worker-1.png',
+  '/images/hero/workers/worker-2.png',
+  '/images/hero/workers/worker-3.png',
+  '/images/hero/workers/worker-4.png',
+  '/images/hero/workers/worker-5.png',
 ]
 
-function StatCounter({ end, label, suffix = '' }: { end: number, label: string, suffix?: string }) {
-  const [count, setCount] = useState(0)
+const statsData = [
+  { end: 17, label: "Projects Completed", suffix: "" },
+  { end: 10, label: "Years Experience", suffix: "+" },
+  { end: 14, label: "Happy Clients", suffix: "" },
+  { end: 2, label: "Regional Offices", suffix: "" }
+];
+
+function AutoHighlightingStats() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    let startTimestamp: number | null = null;
-    const duration = 2000;
-
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setCount(Math.floor(ease * end));
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-    window.requestAnimationFrame(step);
-  }, [end]);
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % statsData.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-[var(--border)] pb-4 lg:pb-0 lg:pr-8 last:border-0 last:pb-0 pt-4 lg:pt-0 first:pt-0">
-      <div className="font-bebas text-4xl text-[var(--primary)] text-center">
-        {count}{suffix}
-      </div>
-      <div className="font-rajdhani text-sm text-[var(--gray)] uppercase tracking-wider font-bold text-center mt-1">
-        {label}
-      </div>
+    <div className="w-full lg:w-[320px] shrink-0 flex flex-col gap-4 relative z-30 my-8 lg:my-0 lg:ml-8">
+      {statsData.map((stat, i) => {
+        const isActive = activeIndex === i;
+        
+        return (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.4 + (i * 0.15), duration: 0.8, type: "spring" }}
+            className="relative"
+          >
+            <motion.div
+              animate={{ 
+                scale: isActive ? 1.05 : 1,
+                x: isActive ? -10 : 0,
+                backgroundColor: isActive ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.85)',
+                borderColor: isActive ? 'var(--primary)' : 'rgba(255, 255, 255, 0.2)',
+                boxShadow: isActive ? '0 10px 30px rgba(124,179,66,0.3)' : '0 4px 6px rgba(0,0,0,0.05)'
+              }}
+              transition={{ duration: 0.5, type: 'spring', stiffness: 200 }}
+              className="flex items-center justify-between p-4 rounded-lg backdrop-blur-xl border-l-[6px] overflow-hidden"
+              style={{ borderLeftColor: isActive ? 'var(--primary)' : 'transparent' }}
+            >
+              {/* Highlight sweep effect */}
+              {isActive && (
+                <motion.div
+                  initial={{ left: '-100%' }}
+                  animate={{ left: '200%' }}
+                  transition={{ duration: 1.5, ease: "easeInOut" }}
+                  className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 z-0 pointer-events-none"
+                />
+              )}
+              
+              <div className="flex flex-col relative z-10">
+                <motion.div 
+                  animate={{ color: isActive ? 'var(--primary)' : 'var(--accent)' }}
+                  className="font-bebas text-4xl leading-none"
+                >
+                  {stat.end}<span className="text-2xl ml-1">{stat.suffix}</span>
+                </motion.div>
+                <div className={`font-rajdhani text-[11px] uppercase tracking-widest font-bold mt-1 transition-colors duration-300 ${isActive ? 'text-[var(--black)]' : 'text-[var(--gray)]'}`}>
+                  {stat.label}
+                </div>
+              </div>
+
+              <motion.div 
+                animate={{ 
+                  scale: isActive ? 1.2 : 0.8,
+                  opacity: isActive ? 1 : 0.2
+                }}
+                className="w-10 h-10 rounded-full flex justify-center items-center bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/20 relative z-10"
+              >
+                <span className="text-xl">✦</span>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        );
+      })}
     </div>
   )
 }
@@ -84,7 +135,7 @@ function Particles() {
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0)
-  
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % IMAGES.length)
@@ -99,7 +150,7 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen w-full overflow-hidden bg-[var(--gray-bg)]">
-      
+
       {/* Slideshow Background */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="popLayout">
@@ -113,7 +164,7 @@ export default function Hero() {
             className="absolute inset-0 w-full h-full object-cover"
           />
         </AnimatePresence>
-        
+
         {/* Clear background overlay with subtle dark tint for text readability */}
         <div className="absolute inset-0 bg-black/40" />
         <div className="scanline opacity-10" />
@@ -126,18 +177,18 @@ export default function Hero() {
         <span className="font-bebas text-[var(--primary)] tracking-[6px] opacity-80">SINCE 2014</span>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-8 h-full relative z-20 flex flex-col justify-center items-center pt-24 pb-12">
-        
-        <div className="flex flex-col items-center justify-center gap-16 mt-12 w-full">
-          
-          {/* Main Content - Centered */}
-          <div className="max-w-4xl flex flex-col items-center text-center">
-            
+      <div className="w-full mx-auto px-8 h-full relative z-20 flex flex-col justify-center items-center pt-24 pb-12">
+
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 mt-12 w-full w-full">
+
+          {/* Main Content - Left aligned on desktop */}
+          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-black/40 backdrop-blur-sm border border-white/20 mb-8 shadow-sm lg:self-start"
             >
               <span className="w-2 h-2 rounded-full bg-[var(--primary)] animate-pulse" />
               <span className="font-rajdhani text-white text-xs uppercase tracking-widest font-bold">
@@ -145,7 +196,7 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <h1 className="font-bebas text-[clamp(36px,10vw,88px)] text-white leading-[0.95] tracking-tight mb-8 flex flex-wrap justify-center gap-x-4 drop-shadow-xl w-full">
+            <h1 className="font-bebas text-[clamp(36px,10vw,88px)] text-white leading-[0.95] tracking-tight mb-8 flex flex-wrap justify-center lg:justify-start gap-x-4 drop-shadow-xl w-full">
               {words.map((word, i) => (
                 <motion.span
                   key={i}
@@ -163,7 +214,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
-              className="font-inter text-gray-100 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-md mx-auto"
+              className="font-inter text-gray-100 text-lg md:text-xl max-w-2xl mb-10 leading-relaxed font-medium drop-shadow-md mx-auto lg:mx-0"
             >
               A Class I Electrical contractor with deep expertise in turnkey End to End Electrical solutions. Committed to deliver from design to planning and installation.
             </motion.p>
@@ -172,7 +223,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 w-full px-4 sm:px-0"
+              className="flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 w-full px-4 sm:px-0"
             >
               <Link href="/services" className="w-full sm:w-auto">
                 <motion.button
@@ -193,18 +244,8 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Horizontal Stats Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            className="w-full max-w-5xl bg-white/95 backdrop-blur-xl border-t-[6px] border-[var(--primary)] rounded-sm p-8 shadow-2xl flex flex-col lg:flex-row justify-around items-center"
-          >
-             <StatCounter end={17} label="Projects" />
-             <StatCounter end={10} label="Years" suffix="+" />
-             <StatCounter end={14} label="Clients" />
-             <StatCounter end={2} label="Offices" />
-          </motion.div>
+          {/* Auto-Highlighting Stats Stream */}
+          <AutoHighlightingStats />
 
         </div>
 

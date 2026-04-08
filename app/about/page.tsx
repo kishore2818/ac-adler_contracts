@@ -9,7 +9,7 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/about.png" 
           title="ABOUT ADLER" 
           subtitle="Building the backbone of India's electrical infrastructure for over 10 years with uncompromising quality." 
         />

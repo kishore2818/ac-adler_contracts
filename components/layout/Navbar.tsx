@@ -42,7 +42,7 @@ export default function Navbar() {
       }}
       className="fixed top-0 left-0 right-0 z-[1000] h-[72px]"
     >
-      <div className="max-w-[1280px] mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
+      <div className="w-full mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
         
         {/* Logo */}
         <Link href="/" className="flex items-center group z-50">
@@ -73,7 +73,7 @@ export default function Navbar() {
             <motion.button
               whileHover={{ y: -2, boxShadow: '0 8px 30px rgba(124,179,66,0.4)', backgroundColor: 'var(--primary-dark)' }}
               whileTap={{ scale: 0.97 }}
-              className="bg-[var(--primary)] text-white font-rajdhani font-bold text-sm tracking-[0.2em] uppercase px-8 py-3 rounded-sm transition-all"
+              className="bg-[var(--primary)] text-white font-inter font-bold text-sm tracking-[0.1em] uppercase px-8 py-3 rounded-sm transition-all"
             >
               Get a Quote
             </motion.button>
@@ -109,7 +109,7 @@ export default function Navbar() {
                   <Link 
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className={`font-rajdhani text-xl tracking-widest uppercase transition-colors ${pathname === link.href ? 'text-[var(--primary)]' : 'text-[var(--black)]'} hover:text-[var(--primary)]`}
+                    className={`font-inter text-xl tracking-widest uppercase transition-colors ${pathname === link.href ? 'text-[var(--primary)] font-bold' : 'text-[var(--black)]'} hover:text-[var(--primary)]`}
                   >
                     {link.label}
                   </Link>

@@ -35,13 +35,19 @@ export default function ClientsCarousel() {
 
   return (
     <section className="bg-white py-24 pt-0 overflow-hidden">
-      <div className="max-w-[1280px] mx-auto px-8 border-t border-[var(--border)] pt-24">
+      <div className="w-full mx-auto px-8 border-t border-[var(--border)] pt-24">
         
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
           <h2 className="font-bebas text-4xl text-[var(--accent)] tracking-wider">
             TRUSTED BY <span className="text-[var(--primary)]">LEADING COMPANIES</span>
           </h2>
-        </div>
+        </motion.div>
 
         <div className="relative">
           {/* Fade edges */}

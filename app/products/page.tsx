@@ -10,12 +10,12 @@ export default function ProductsPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/products.png" 
           title="OUR PRODUCTS" 
           subtitle="Engineered for reliability, safety, and scale. Browse our full range of custom-built electrical panels." 
         />
         <section className="bg-[var(--gray-bg)] py-24">
-          <div className="max-w-[1280px] mx-auto px-8">
+          <div className="w-full mx-auto px-8">
              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {products.map((product, i) => (
                   <div key={product.slug} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden group hover:border-[var(--primary)] transition-colors">

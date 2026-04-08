@@ -41,7 +41,7 @@ export default function StatsCounter() {
 
   return (
     <section className="bg-[var(--gray-bg)] py-20 relative z-10 -mt-8">
-      <div className="max-w-[1280px] mx-auto px-8">
+      <div className="w-full mx-auto px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <ScrollReveal key={i} delay={i * 0.1} className="h-full">

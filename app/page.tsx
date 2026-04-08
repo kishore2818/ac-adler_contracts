@@ -28,12 +28,16 @@ export default function Home() {
         <Products />
         <Industries />
         <OngoingProjects />
-        <WhyUs />
-        <Certifications />
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full overflow-hidden">
+          <WhyUs />
+          <Certifications />
+        </div>
         <ClientsCarousel />
         <Testimonials />
-        <FAQ />
-        <Enquiry />
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full">
+          <FAQ />
+          <Enquiry />
+        </div>
       </main>
       <Footer />
       <WhatsAppButton />

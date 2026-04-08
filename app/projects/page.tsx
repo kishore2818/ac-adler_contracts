@@ -25,13 +25,13 @@ export default function ProjectsPage() {
     <>
       <Navbar />
       <main>
-        <PageHero 
+        <PageHero image="/images/page-headers/projects.png" 
           title="OUR PROJECT PORTFOLIO" 
           subtitle="A demonstration of our capability across Industrial, Commercial, and Institutional sectors." 
         />
         
         <section className="py-24 bg-white min-h-[800px]">
-          <div className="max-w-[1280px] mx-auto px-8">
+          <div className="w-full mx-auto px-8">
             
             {/* Ongoing Projects Section */}
             <div className="mb-20">

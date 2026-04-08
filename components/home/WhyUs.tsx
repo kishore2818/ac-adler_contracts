@@ -14,8 +14,14 @@ const reasons = [
 
 export default function WhyUs() {
   return (
-    <section className="bg-[var(--gray-bg)] py-24 md:py-32 border-y border-[var(--border)]">
-      <div className="max-w-[1280px] mx-auto px-8">
+    <motion.section 
+      initial={{ x: -150, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="bg-[var(--gray-bg)] py-16 lg:py-24 h-full flex flex-col justify-center"
+    >
+      <div className="w-full max-w-2xl mx-auto px-6 lg:px-12">
         {/* Centered Section Header */}
         <div className="text-center flex flex-col items-center mb-16">
           <SectionLabel text="The Adler Advantage" color="accent" />
@@ -56,6 +62,6 @@ export default function WhyUs() {
         </ScrollReveal>
 
       </div>
-    </section>
+    </motion.section>
   )
 }
