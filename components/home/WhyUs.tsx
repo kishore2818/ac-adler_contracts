@@ -2,14 +2,15 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { DraftingCompass, ShieldCheck, Zap, Diamond } from 'lucide-react'
 import SectionLabel from '../shared/SectionLabel'
 import ScrollReveal, { staggerContainer, fadeUp } from '../shared/ScrollReveal'
 
 const reasons = [
-  { icon: '📐', title: 'Meticulous Planning', desc: 'Every project begins with detailed design and execution strategies for precision delivery.' },
-  { icon: '🛡️', title: 'Quality & Safety', desc: 'Uncompromising standards at every stage — from material selection to final commissioning.' },
-  { icon: '⚡', title: 'Speed of Delivery', desc: 'Streamlined project management ensures we meet the tightest deadlines without compromise.' },
-  { icon: '💎', title: 'Optimum Cost', desc: 'Transparent partnerships built on trust, delivering maximum value at competitive pricing.' },
+  { icon: DraftingCompass, title: 'Meticulous Planning', desc: 'Every project begins with detailed design and execution strategies for precision delivery.' },
+  { icon: ShieldCheck, title: 'Quality & Safety', desc: 'Uncompromising standards at every stage — from material selection to final commissioning.' },
+  { icon: Zap, title: 'Speed of Delivery', desc: 'Streamlined project management ensures we meet the tightest deadlines without compromise.' },
+  { icon: Diamond, title: 'Optimum Cost', desc: 'Transparent partnerships built on trust, delivering maximum value at competitive pricing.' },
 ]
 
 export default function WhyUs() {
@@ -50,8 +51,8 @@ export default function WhyUs() {
               whileHover={{ scale: 1.03, borderColor: 'var(--primary)' }}
               className="bg-white p-8 rounded-sm shadow-sm border border-[var(--border)] transition-colors hover:bg-[var(--primary-soft)] cursor-pointer group"
             >
-              <div className="w-14 h-14 rounded-full bg-[var(--primary-glow)] flex items-center justify-center text-2xl mb-6 border border-[var(--primary)]/20 group-hover:bg-[var(--primary)] group-hover:text-white transition-all">
-                {r.icon}
+              <div className="w-14 h-14 rounded-full bg-[var(--primary-glow)] flex items-center justify-center mb-6 border border-[var(--primary)]/20 group-hover:bg-[var(--primary)] group-hover:text-white transition-all text-[var(--primary)]">
+                <r.icon size={24} strokeWidth={1.5} />
               </div>
               <h3 className="font-rajdhani text-xl font-bold uppercase mb-3 text-[var(--accent)]">{r.title}</h3>
               <p className="font-inter text-sm text-[var(--gray)] line-clamp-3">

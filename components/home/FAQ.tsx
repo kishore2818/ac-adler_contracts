@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import SectionLabel from '../shared/SectionLabel'
 
 const faqs = [
@@ -38,7 +39,7 @@ export default function FAQ() {
           {faqs.map((faq, i) => {
             const isOpen = openIndex === i
             return (
-              <div key={i} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden">
+              <div key={i} className="bg-white border border-[var(--border)] rounded-sm overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                 <button 
                   onClick={() => setOpenIndex(isOpen ? null : i)}
                   className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-gray-50 transition-colors"
@@ -46,12 +47,13 @@ export default function FAQ() {
                   <span className={`font-rajdhani text-lg md:text-xl font-bold tracking-widest uppercase transition-colors ${isOpen ? 'text-[var(--primary)]' : 'text-[var(--black)]'}`}>
                     {faq.q}
                   </span>
-                  <motion.span
+                  <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    className="text-[var(--primary)] text-xl font-bold"
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="text-[var(--primary)]"
                   >
-                    ↓
-                  </motion.span>
+                    <ChevronDown size={24} />
+                  </motion.div>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (

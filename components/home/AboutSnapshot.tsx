@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { CheckCircle } from 'lucide-react'
 import SectionLabel from '../shared/SectionLabel'
 import ScrollReveal, { fadeLeft, fadeRight } from '../shared/ScrollReveal'
 import Link from 'next/link'
@@ -92,7 +93,7 @@ export default function AboutSnapshot() {
                 className="absolute top-4 sm:top-12 -left-2 sm:-left-8 bg-white p-3 sm:p-4 shadow-xl border-l-4 border-[var(--primary)] rounded-sm flex items-center gap-3 z-30"
               >
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[var(--primary-soft)] rounded-full flex justify-center items-center">
-                  <span className="text-[var(--primary)] text-sm sm:text-lg">✓</span>
+                  <CheckCircle className="text-[var(--primary)] w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
                 <div>
                   <div className="font-rajdhani font-bold tracking-wider text-xs sm:text-sm uppercase">ISO Certified</div>
